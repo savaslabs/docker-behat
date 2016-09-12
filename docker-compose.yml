@@ -1,16 +1,12 @@
 version: "2"
 
 services:
-  selenium:
-    image: selenium/standalone-chrome
-    volumes:
-      - /dev/shm:/dev/shm
-
   behat:
-    image: bergil/docker-behat
+    image: savaslabs/docker-behat
     volumes:
       - ./:/srv
-    links:
-      - selenium
-    depends_on:
-      - selenium
+
+networks:
+  default:
+    external:
+        name: your-projects-network-name

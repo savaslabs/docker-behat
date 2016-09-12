@@ -1,6 +1,22 @@
 Environment for running Behat tests.
 ============
 
+Fork of https://github.com/Bergil32/docker-behat with the following changes:
+* Remove default feature file from /features
+* Remove all behat extensions from base image
+* Re-run `composer install` on entrypoint
+
+To use in a project:
+* Copy the service definitions for `behat` and `selenium` into the project `docker-compose.yml` file
+* Create a directory named (for example) `behat` and copy this project's `docker-compose.yml` and `composer.json` into that directory.
+ * Customize `behat.yml`, `composer.json` as needed and add tests into the `/features` directory.
+ * Replace `your-projects-network-name` with the network name of the default network for your root `docker-compose.yml` file
+ * If you need selenium, add a selenium container (e.g. `selenium/standalone-chrome` to your root dockerfile)
+ * To run tests, run `cd behat && docker-compose up`.
+ 
+Original project docs
+==========
+
 ###### The image and environment architecture are regularly updated. Check for updates.   
 
 [![](https://images.microbadger.com/badges/image/bergil/docker-behat.svg)](https://microbadger.com/images/bergil/docker-behat)
